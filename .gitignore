@@ -1,0 +1,7 @@
+# Build mapper og compilerede filer
+build/
+*.o
+sensor-publisher/sensor-publisher
+telemetry-processor/telemetry-processor
+
+config.json

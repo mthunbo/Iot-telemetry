@@ -1,0 +1,7 @@
+Bosch Sensortec BME280 SensorAPI
+Driver version: v3.5.1
+Git ref: bme280_v3.5.1
+Repository: https://github.com/boschsensortec/BME280_SensorAPI
+
+The files bme280.c, bme280.h, bme280_defs.h and LICENSE are
+unmodified upstream files from Bosch Sensortec.

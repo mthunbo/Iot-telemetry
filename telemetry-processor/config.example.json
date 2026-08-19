@@ -1,0 +1,7 @@
+{
+  "broker_host": "localhost",
+  "broker_port": 1883,
+  "raw_topic": "sensors/+/raw",
+  "processed_topic": "gateway/bp-06/weather",
+  "gateway_id": "bp-06"
+}

@@ -1,0 +1,9 @@
+{
+  "broker_host": "localhost",
+  "broker_port": 1883,
+  "raw_topic": "sensors/bp-06/raw",
+  "device_id": "bp-06",
+  "i2c_device": "/dev/play/grove/i2c",
+  "i2c_address": "0x76",
+  "interval_ms": 5000
+}
