@@ -38,6 +38,10 @@ std::string process_telemetry(const std::string& raw_payload) {
     processed_json["temperature_c"] = parsed_json["temperature_c"];
     processed_json["humidity_pct"] = parsed_json["humidity_pct"];
     processed_json["pressure_hpa"] = parsed_json["pressure_hpa"];
+    if (parsed_json.contains("eco2_ppm") && parsed_json.contains("tvoc_ppb")) {
+        processed_json["eco2_ppm"] = parsed_json["eco2_ppm"];
+        processed_json["tvoc_ppb"] = parsed_json["tvoc_ppb"];
+    }
 
     processed_json["status"] = "valid";
 

@@ -9,11 +9,7 @@ LIBS     = -lmosquitto
 BUILD = build
 TARGET = sensor-publisher
 
-CXX_SOURCES = src/main.cpp \
-              src/config.cpp \
-              ../common/src/mqtt_shared.cpp \
-              src/linux_i2c.cpp \
-              src/bme280_sensor.cpp
+CXX_SOURCES = src/main.cpp src/config.cpp ../common/src/mqtt_shared.cpp src/linux_i2c.cpp src/bme280_sensor.cpp src/ccs811_sensor.cpp
 
 C_SOURCES = vendor/bosch/bme280.c
 

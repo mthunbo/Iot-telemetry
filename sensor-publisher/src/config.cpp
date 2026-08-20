@@ -24,6 +24,7 @@ bool load_config(const std::string& path) {
         app_config.device_id = j.at("device_id").get<std::string>();
         app_config.i2c_device = j.at("i2c_device").get<std::string>();
         app_config.i2c_address = j.at("i2c_address").get<std::string>();
+        app_config.ccs811_address = j.at("ccs811_address").get<std::string>();
         app_config.interval_ms = j.at("interval_ms").get<int>();
     } catch (...) {
         return false;

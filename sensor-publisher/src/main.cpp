@@ -1,6 +1,7 @@
 #include "config.hpp"
 #include "mqtt_shared.hpp"
 #include "bme280_sensor.hpp"
+#include "ccs811_sensor.hpp"
 #include <nlohmann/json.hpp>
 #include <mosquitto.h>
 #include <iostream>
@@ -33,21 +34,31 @@ int main(int argc, char* argv[]) {
     mosquitto_loop_start(mosq);
 
     uint8_t i2c_addr = static_cast<uint8_t>(std::stoul(app_config.i2c_address, nullptr, 0));
+    uint8_t ccs_addr = static_cast<uint8_t>(std::stoul(app_config.ccs811_address, nullptr, 0));
 
     try {
         std::cout << "[Sensor] Connecting to " << app_config.i2c_device << " at " << app_config.i2c_address << std::endl;
         Bme280Sensor sensor(app_config.i2c_device, i2c_addr);
         sensor.init();
+        std::cout << "[Sensor] Connecting CCS811..." << app_config.ccs811_address << std::endl;
+        Ccs811Sensor ccs_sensor(app_config.i2c_device, ccs_addr);
+        ccs_sensor.init();
         std::cout << "[Sensor] Initialization successful. Starting publishing loop." << std::endl;
 
         while (true) {
             auto measurement = sensor.read();
+            auto ccs_meas = ccs_sensor.read();
 
             json payload;
             payload["device_id"] = app_config.device_id;
             payload["temperature_c"] = measurement.temperature_c;
             payload["humidity_pct"] = measurement.humidity_pct;
             payload["pressure_hpa"] = measurement.pressure_hpa;
+
+            if (ccs_meas.valid) {
+                payload["eco2_ppm"] = ccs_meas.eco2_ppm;
+                payload["tvoc_ppb"] = ccs_meas.tvoc_ppb;
+            }
 
             std::string payload_str = payload.dump();
 

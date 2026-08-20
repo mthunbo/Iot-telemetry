@@ -10,6 +10,7 @@ struct Config {
     std::string device_id;
     std::string i2c_device;
     std::string i2c_address;
+    std::string ccs811_address;
     int interval_ms;
 };
 

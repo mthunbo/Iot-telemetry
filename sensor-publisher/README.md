@@ -21,9 +21,9 @@ Dette modul kræver, at kildekoden fra `vendor/bosch/` er til stede. `Makefile` 
   "pressure_hpa": 1012.5
 }
 
-Connector:           Grove
-Stabilt Linux alias: /dev/play/grove/i2c
-Underliggende bus:   /dev/i2c-1
-Sensoradresse:        0x76
+Connector:            Grove
+Stabilt Linux alias:  /dev/play/grove/i2c
+Underliggende bus:    /dev/i2c-1
+Sensoradresses:       0x76, 0x5A
 Chip-ID:              0x60
-Identificeret sensor: BME280
+Identificeret sensor: BME280, CCS811
